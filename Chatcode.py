@@ -1104,19 +1104,15 @@ if section == "Portfolio Dashboard":
         )
         st.markdown(f"<hr style='border-top:1px solid {C_BORDER}; margin-bottom:1.2rem'>",
                     unsafe_allow_html=True)
-    
 if run:
-    pass
     if not tickers:
         st.error("Enter at least one ticker symbol.")
-
-elif abs(sum(weights) - 1.0) > 0.01:
-    st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
-
-else:
-    st.session_state.sidebar_state = "collapsed"
-    st.session_state.run_portfolio = True
-    st.rerun()
+    elif abs(sum(weights) - 1.0) > 0.01:
+        st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
+    else:
+        st.session_state.sidebar_state = "collapsed"
+        st.session_state.run_portfolio = True
+        st.rerun()
 
 if st.session_state.get("run_portfolio", False):
     ui_portfolio_dashboard(tickers, weights, benchmark)
