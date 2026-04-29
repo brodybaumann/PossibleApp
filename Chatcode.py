@@ -1096,8 +1096,8 @@ else:
 
     if run:
         if not tickers:
-        st.error("Enter at least one ticker symbol.")
-    elif abs(sum(weights) - 1.0) > 0.01:
+            st.error("Enter at least one ticker symbol.")
+        elif abs(sum(weights) - 1.0) > 0.01:
         st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
     else:
         st.session_state.sidebar_state = "collapsed"
