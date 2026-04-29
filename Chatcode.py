@@ -1040,7 +1040,7 @@ if section == "Stock Analysis":
 elif section == "Portfolio Dashboard":
    st.write("Portfolio Dashboard")
 
-    if section == "Portfolio Dashboard":
+if section == "Portfolio Dashboard":
         st.sidebar.markdown(
             f"<p style='color:{C_MUTED}; font-size:0.7rem; text-transform:uppercase; "
             f"letter-spacing:0.12em; font-family:{FONT};'>Portfolio Settings</p>",
