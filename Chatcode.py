@@ -1106,11 +1106,11 @@ if section == "Portfolio Dashboard":
                     unsafe_allow_html=True)
 
 if run:st.sidebar.button("Run Analysis")
-    if not tickers:
+if not tickers:
         st.error("Enter at least one ticker symbol.")
-    elif abs(sum(weights) - 1.0) > 0.01:
+elif abs(sum(weights) - 1.0) > 0.01:
         st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
-    else:
+else:
         st.session_state.sidebar_state = "collapsed"
         st.session_state.run_portfolio = True
         st.rerun()
