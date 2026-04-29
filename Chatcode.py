@@ -348,12 +348,14 @@ def apply_theme():
             cursor: pointer;
         }}
         /* Sidebar collapse button icon — ensure Material Symbols font is preserved */
-        button[data-testid="baseButton-headerNoPadding"] span.material-symbols-rounded,
-        [data-testid="collapsedControl"] span.material-symbols-rounded {{
-            font-family: "Material Symbols Rounded" !important;
-            font-size: 1.2rem !important;
-            color: {C_MUTED} !important;
-        }}
+       /* FIX: force proper sidebar arrow icons */
+       button[data-testid="baseButton-headerNoPadding"] span,
+      [data-testid="collapsedControl"] span {
+      font-family: "Material Symbols Rounded" !important;
+          font-size: 20px !important;
+          line-height: 1 !important;
+          color: {C_MUTED} !important;
+        }
 
         /* ── Slider ── */
         [data-testid="stSlider"] {{
@@ -1007,7 +1009,12 @@ def main():
                     unsafe_allow_html=True)
 
         if run:
-            ui_stock_analysis(ticker)
+    st.session_state.sidebar_state = "collapsed"
+    st.session_state.run_stock = True
+    st.rerun()
+
+if st.session_state.get("run_stock", False):
+    ui_stock_analysis(ticker)
         else:
             st.markdown(
                 f"<p style='color:{C_MUTED}; margin-top:1.5rem; font-family:{FONT};'>"
@@ -1087,14 +1094,18 @@ def main():
         st.markdown(f"<hr style='border-top:1px solid {C_BORDER}; margin-bottom:1.2rem'>",
                     unsafe_allow_html=True)
 
-        if run:
-            # Validate weights sum before running
-            if not tickers:
-                st.error("Enter at least one ticker symbol.")
-            elif abs(sum(weights) - 1.0) > 0.01:
-                st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
-            else:
-                ui_portfolio_dashboard(tickers, weights, benchmark)
+       if run:
+    if not tickers:
+        st.error("Enter at least one ticker symbol.")
+    elif abs(sum(weights) - 1.0) > 0.01:
+        st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
+    else:
+        st.session_state.sidebar_state = "collapsed"
+        st.session_state.run_portfolio = True
+        st.rerun()
+
+if st.session_state.get("run_portfolio", False):
+    ui_portfolio_dashboard(tickers, weights, benchmark)
         else:
             st.markdown(
                 f"<p style='color:{C_MUTED}; margin-top:1.5rem; font-family:{FONT};'>"
