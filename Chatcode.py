@@ -1106,6 +1106,7 @@ if section == "Portfolio Dashboard":
                     unsafe_allow_html=True)
     
 if run:
+    pass
 if not tickers:
     st.error("Enter at least one ticker symbol.")
 
