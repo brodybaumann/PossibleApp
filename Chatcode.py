@@ -1029,10 +1029,6 @@ else:
     #   - Any number of stocks allowed (not locked to exactly 5)
     #   - Tickers still entered as a comma-separated text input
     # ══════════════════════════════════════════════════════════════════════════
-    section = st.sidebar.selectbox(
-               "Select Page",
-               ["Home", "Portfolio Dashboard"]
-        )
     if section == "Portfolio Dashboard":
         st.sidebar.markdown(
             f"<p style='color:{C_MUTED}; font-size:0.7rem; text-transform:uppercase; "
