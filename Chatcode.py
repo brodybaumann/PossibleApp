@@ -1106,8 +1106,8 @@ if run:
 
 if st.session_state.get("run_portfolio", False):
     ui_portfolio_dashboard(tickers, weights, benchmark)
-        else:
-            st.markdown(
+else:
+    st.markdown(
                 f"<p style='color:{C_MUTED}; margin-top:1.5rem; font-family:{FONT};'>"
                 "Enter your tickers and adjust the weight sliders in the sidebar, "
                 "then click Run Analysis.</p>",
