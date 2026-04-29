@@ -1107,8 +1107,8 @@ if section == "Portfolio Dashboard":
     
 if run:
     pass
-if not tickers:
-    st.error("Enter at least one ticker symbol.")
+    if not tickers:
+        st.error("Enter at least one ticker symbol.")
 
 elif abs(sum(weights) - 1.0) > 0.01:
     st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
