@@ -1108,13 +1108,13 @@ run = st.sidebar.button("Run Analysis")
 
 if run:
 if not tickers:
-    st.error("Enter at least one ticker symbol.")
+st.error("Enter at least one ticker symbol.")
 elif abs(sum(weights) - 1.0) > 0.01:
-    st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
+st.error(f"Weights must sum to 1.00. Current sum: {sum(weights):.2f}")
 else:
-    st.session_state.sidebar_state = "collapsed"
-    st.session_state.run_portfolio = True
-    st.rerun()
+st.session_state.sidebar_state = "collapsed"
+st.session_state.run_portfolio = True
+st.rerun()
 
 if st.session_state.get("run_portfolio", False):
     ui_portfolio_dashboard(tickers, weights, benchmark)
