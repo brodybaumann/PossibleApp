@@ -1015,11 +1015,11 @@ def main():
 
 if st.session_state.get("run_stock", False):
     ui_stock_analysis(ticker)
-        else:
-            st.markdown(
-                f"<p style='color:{C_MUTED}; margin-top:1.5rem; font-family:{FONT};'>"
-                "Enter a ticker symbol in the sidebar and click Run Analysis.</p>",
-                unsafe_allow_html=True
+else:
+    st.markdown(
+     f"<p style='color:{C_MUTED}; margin-top:1.5rem; font-family:{FONT};'>"
+     "Enter a ticker symbol in the sidebar and click Run Analysis.</p>",
+      unsafe_allow_html=True
             )
 
     # ══════════════════════════════════════════════════════════════════════════
