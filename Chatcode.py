@@ -1009,9 +1009,9 @@ def main():
                     unsafe_allow_html=True)
 
         if run:
-    st.session_state.sidebar_state = "collapsed"
-    st.session_state.run_stock = True
-    st.rerun()
+            st.session_state.sidebar_state = "collapsed"
+            st.session_state.run_stock = True
+            st.rerun()
 
 if st.session_state.get("run_stock", False):
     ui_stock_analysis(ticker)
