@@ -1114,7 +1114,6 @@ if run:
         st.session_state.run_portfolio = True
         st.rerun()
 
-
 if st.session_state.get("run_portfolio", False):
     ui_portfolio_dashboard(tickers, weights, benchmark)
 else:
