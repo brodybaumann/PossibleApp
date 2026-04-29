@@ -1105,7 +1105,7 @@ if section == "Portfolio Dashboard":
         st.markdown(f"<hr style='border-top:1px solid {C_BORDER}; margin-bottom:1.2rem'>",
                     unsafe_allow_html=True)
 
-if run:
+if run:st.sidebar.button("Run Analysis")
     if not tickers:
         st.error("Enter at least one ticker symbol.")
     elif abs(sum(weights) - 1.0) > 0.01:
